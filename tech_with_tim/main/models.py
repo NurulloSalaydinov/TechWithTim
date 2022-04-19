@@ -62,6 +62,7 @@ class Contact(models.Model):
     phone = models.CharField('Phone', max_length=255)
     theme = models.CharField('Theme', max_length=255)
     message = models.TextField('Message')
+    created_at = models.DateTimeField('Time', auto_now_add=True)
 
     def __str__(self):
         return self.name
