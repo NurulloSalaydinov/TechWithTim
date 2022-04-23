@@ -1,4 +1,3 @@
-// 'use strict';
 (function () {
   document.querySelector('.nav-links').querySelectorAll('li').forEach(item => {
     item.onmouseenter = function (event) {
@@ -79,6 +78,7 @@ var splide = new Splide('#splide4', {
   focus: 'center',
   gap: '20px',
   autoplay: true,
+  arrows: false,
   perMove: 1,
   breakpoints: {
     767: {
@@ -100,14 +100,11 @@ splide.mount()
 
 
 var splide2 = new Splide('#splide3', {
-  // type   : 'loop',
   padding: '5rem',
   gap: '15px',
   perMove: 1,
-  // autoWidth: true,
   perPage: 1,
   arrows: false,
-  // focus: 'center',
   autoplay: true,
   breakpoints: {
     767: {
@@ -128,14 +125,12 @@ var splide2 = new Splide('#splide3', {
 splide2.mount()
 
 var splide3 = new Splide('#splide2', {
-  // type   : 'loop',
   perMove: 1,
   padding: '5rem',
   gap: '15px',
   autoWidth: true,
   perPage: 1,
   arrows: false,
-  // focus: 'center',
   autoplay: true,
   breakpoints: {
     767: {
@@ -156,14 +151,12 @@ var splide3 = new Splide('#splide2', {
 splide3.mount()
 
 var splide1 = new Splide('#splide1', {
-  // type   : 'loop',
   perMove: 1,
   padding: '5rem',
   gap: '15px',
   perPage: 1,
   autoWidth: true,
   arrows: false,
-  // focus: 'center',
   autoplay: true,
   breakpoints: {
     767: {

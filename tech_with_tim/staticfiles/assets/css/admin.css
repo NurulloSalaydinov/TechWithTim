@@ -679,6 +679,7 @@ img {
     transform: translate(-50%, -50%);
     overflow: scroll;
     height: 100%;
+    max-height: 700px;
 }
 
 .modal .box form > div {
