@@ -1,0 +1,37 @@
+||||||||||||||||||||||||||||||||||||||||||||
+
+
+TIM ADMIN
+
+    ----------------------------------------
+        DONE--Login
+        DONE--Logout
+        DONE--Admin Information
+    ----------------------------------------
+
+    DONE--Make it possible to add delete edit courses
+    DONE--Make it possible to add delete edit teachers
+    DONE--Make it possible to add delete edit faq
+    DONE--Make it possible to add delete edit gallery
+    DONE--Make it possible to delete contacts and pin it
+    DONE--Make it possible to edit settings
+    --Make it possible to search
+
+
+||||||||||||||||||||||||||||||||||||||||||||
+
+||||||||||||||||||||||||||||||||||||||||||||
+
+
+English With Tim Home Page
+
+    DONE--Make it possible to see courses
+    DONE--Make it possible to see teachers
+        IMPENDING--Make it possible to see all teachers
+    DONE--Make it possible to see faqs
+    DONE--Make it possible to see gallery
+        IMPENDING--Make it possible to see all gallery
+    DONE--Make it possible to send contacts
+
+
+||||||||||||||||||||||||||||||||||||||||||||

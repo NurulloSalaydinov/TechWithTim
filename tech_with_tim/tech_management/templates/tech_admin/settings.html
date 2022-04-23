@@ -1,0 +1,76 @@
+{% extends 'tech_admin/tech_wrapper.html' %}
+
+{% block content %}
+
+<style>
+    label {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container">
+    <div class="settings-menu">
+        <div class="title">
+            <span>English with tim</span>
+        </div>
+
+        <div class="content">
+            <ul>
+                <li class="item">
+                    <span class="fas fa-location-dot"></span>
+                    <div>
+                        <p>{{ obj.address1 }}</p>
+                        <p>{{ obj.address1 }}</p>
+                    </div>
+                </li>
+                <li class="item">
+                    <span class="fas fa-phone"></span>
+                    <div>
+                        <p>{{ obj.phone1 }}</p>
+                        <p>{{ obj.phone2 }}</p>
+                    </div>
+                </li>
+                <li class="item">
+                    <span class="fas fa-envelope"></span>
+                    <p>{{ obj.email }}</p>
+                </li>
+            </ul>
+            <ul ionic>
+                <li><a href="{{ obj.instagram }}"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="{{ obj.youtube }}"><i class="fa-brands fa-youtube"></i></a></li>
+                <li><a href="{{ obj.facebook }}"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="{{ obj.telegram }}"><i class="fa-brands fa-telegram"></i></a></li>
+            </ul>
+
+            <div style="margin: 25px 0px;">
+                <button style="width: 200px;" class="padding btn" id="open">
+                    <span>Edit</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal">
+    <div class="box" style="display: none;">
+        <div style="position: relative;" class="title">
+            <span>Settings</span>
+            <div type="button" style="position: absolute; right: 0px; top: 0px;">
+                <span class="fas fa-times" id="hide"></span>
+            </div>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                {{ form }}
+            </div>
+            <div>
+                <div>
+                    <input type="submit" value="Save" class="padding btn">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

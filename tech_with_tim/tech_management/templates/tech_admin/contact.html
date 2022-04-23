@@ -1,0 +1,143 @@
+{% extends 'tech_admin/tech_wrapper.html' %}
+
+{% block content %}
+
+<div style="margin-top: 20px;" class="container">
+    
+    {% if contacts.exists %}
+    <h1 style="margin-top: 30px;">
+        Contacts
+    </h1>
+    {% else %}
+    <h1 style="margin-top: 30px;text-align: center">
+        There is no contact
+    </h1>
+    {% endif %}
+
+    {% for contact in contacts %}
+    <div style="position: relative;" class="messages">
+        <div class="row">
+            <div class="sms">
+                <div class="top" style="position: relative;">
+                    <h1>
+                        {{ contact.name }} {{ contact.surname }}
+                    </h1>
+                    <div style="margin-left: 30px;margin-top: 5px;">
+                        <p>
+                            <b>User ID:</b> <span>{{ contact.uuid }}</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <p>
+                        <strong>
+                            Phone: 
+                        </strong>
+                        <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>
+                    </p>
+                    <p>
+                        <strong>
+                            Theme: 
+                        </strong>
+                        {{ contact.theme }}
+                    </p>
+                    <p>
+                        <strong>
+                            Message:
+                        </strong>
+                        {{ contact.message }}
+                    </p>
+                </div>
+                <div class="footer">
+                    <div>
+                        <span>
+                            Time:
+                        </span>
+                        <span>
+                            {{ contact.created_at }}
+                        </span>
+                    </div>
+                    <div>
+                        <a href="{% url 'tech:contact_pin' contact.id %}" style="margin-right: 20px">
+                            <span class="fas fa-edit"></span>
+                        </a>
+                        <a href="{% url 'tech:contact_delete' contact.id %}" style="margin-right: 10px">
+                            <span class="fas fa-trash"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- pinned -->
+    {% if pinneds.exists %}
+    <h1 style="margin-top: 30px;">
+        Pinned Contacts
+    </h1>
+    {% else %}
+    <h1 style="margin-top: 30px;text-align: center">
+        There is no pinned contact
+    </h1>
+    {% endif %}
+
+    {% for contact in pinneds %}
+    <div style="position: relative;" class="messages">
+        <div class="row">
+            <div class="sms">
+                <div class="top" style="position: relative;">
+                    <h1>
+                        {{ contact.name }} {{ contact.surname }}
+                    </h1>
+                    <div style="margin-left: 30px;margin-top: 5px;">
+                        <p>
+                            <b>User ID:</b> <span>{{ contact.uuid }}</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <p>
+                        <strong>
+                            Phone: 
+                        </strong>
+                        <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>
+                    </p>
+                    <p>
+                        <strong>
+                            Theme: 
+                        </strong>
+                        {{ contact.theme }}
+                    </p>
+                    <p>
+                        <strong>
+                            Message:
+                        </strong>
+                        {{ contact.message }}
+                    </p>
+                </div>
+                <div class="footer">
+                    <div>
+                        <span>
+                            Time:
+                        </span>
+                        <span>
+                            {{ contact.created_at }}
+                        </span>
+                    </div>
+                    <div>
+                        <a href="{% url 'tech:contact_pin' contact.id %}" style="margin-right: 20px">
+                            <span class="fas fa-edit"></span>
+                        </a>
+                        <a href="{% url 'tech:contact_delete' contact.id %}" style="margin-right: 10px">
+                            <span class="fas fa-trash"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

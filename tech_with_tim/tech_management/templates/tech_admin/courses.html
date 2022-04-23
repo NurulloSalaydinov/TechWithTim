@@ -1,0 +1,90 @@
+{% extends 'tech_admin/tech_wrapper.html' %}
+
+{% block title %}Course |{% endblock %}
+
+{% block content %}
+{% if courses %}
+<div style="display: flex; justify-content: flex-end; padding: 20px;" class="end line">
+    <a href="#" class="link" id="edit">
+        Edit
+    </a>
+    <div class="icon" id="edit">
+        <span class="fas fa-pen"></span>
+    </div>
+</div>
+{% else %}
+    <h1 style="margin-top: 100px; text-align: center;">You haven't courses yet.</h1>
+{% endif %}
+<div class="container">
+    <div class="cards">
+        {% for course in courses %}
+        <div class="card">
+            <div class="img top header">
+                <img src="{{ course.image.url }}" alt="Course Image">
+                <div class='icon' style="margin-top: 10px;margin-right: 10px">
+                    <a href="{% url 'tech:course_delete' course.id %}">
+                        <span class="fas fa-trash"></span>
+                    </a>
+                </div>
+                <div class='icon' style="margin-right: 60px;margin-top: 10px">
+                    <a href="{% url 'tech:course_edit' course.id %}">
+                        <span class="fas fa-pen"></span>
+                    </a>
+                </div>
+            </div>
+            <div class='content'>
+                <div class='_title'>
+                    <span>{{ course.course_name }}</span>
+                </div>
+                <div class="_descripton">
+                    <span>{{ course.about }}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <center style='margin-top: 100px'>
+        <button class="btn padding" id="open">
+            <span>Add course</span>
+        </button>
+    </center>
+</div>
+<div class="modal">
+    <div class="box" style="display: none;">
+        <div style="position: relative;" class="title">
+            <span>Add course</span>
+            <div type="button" style="position: absolute; right: 0px; top: 0px;">
+                <span class="fas fa-times" id="hide"></span>
+            </div>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                {{ form }}
+            </div>
+            <div>
+                <div>
+                    <input type="submit" value="Add course" class="padding btn">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<style>
+    label {
+        margin-top: 20px;
+    }
+</style>
+<script>
+    $('#edit').on('click', function () {
+        if ($('#edit').text() == 'cancel') $('#edit').text('edit')
+        else $('#edit').text('cancel')
+        $('.card').toggleClass('onDelete')
+    })
+</script>
+{% endblock %}

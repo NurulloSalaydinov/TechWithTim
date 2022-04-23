@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- default meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- /default meta tags -->
+
+    <!-- font awesome css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- /font awesome css  -->
+  <link rel="stylesheet" href="/static/assets/css/splide.min.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+    <!-- /main css -->
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/static/assets/media/logo/favicon/favicon.png" type="image/x-icon">
+    <!-- /favicon -->
+
+    <title>English with Tim</title>
+</head>
+
+<body .page>
+
+    <!-- header -->
+    <header background="#fff">
+        <div .nav.container>
+            <div .img.logo marginTop="5px">
+                <a href="index.html">
+                    <img src="/static/assets/media/logo/logo.png" alt="English with Tim" width="70px">
+                </a>
+            </div>
+            <ul .nav-links>
+                <li><a href="#whywe" .active>Основной</a></li>
+                <li><a href="#courses">Курсы</a></li>
+                <li><a href="#results">Резултаты</a></li>
+                <li><a href="#teachers">Команда</a></li>
+                <li><a href="#">Отзывы</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <div #move></div>
+            </ul>
+            <div .burger display="none">
+                <span .fas.fa-bars></span>
+            </div>
+        </div>
+    </header>
+    <!-- /header -->
+
+    {% block content %}
+
+    {% endblock %}
+
+    <!-- footer -->
+    <footer>
+        <div .footer-img transform="translateY(11px)">
+            <img src="/static/assets/media/images/footer.png" width="100%">
+        </div>
+        <section #footer paddingBottom="40px">
+            <div .container borderBottom="1px solid #fff" paddingBottom="50px">
+                <div .row display="flex" justifyContent="space-between">
+                    <div .col width="250px">
+                        <div .logo.img>
+                            <img src="/static/assets/media/logo/logo-light.png" width="70px" alt="">
+                        </div>
+                        <p fontSize="18px">С нашим учебным центром вы осуществите свою мечту. Мы поможем вам</p>
+                    </div>
+                    <div .col display="flex" justifyContent="space-between" width="350px">
+                        <ul marginRight="50px">
+                            <li ._title><span>Меню</span> </li>
+                            <li><a href="#">Основной</a></li>
+                            <li><a href="#">О нас</a></li>
+                            <li><a href="#">Курсы</a></li>
+                            <li><a href="#">Команда</a></li>
+                            <li><a href="#">Отзывы</a></li>
+                            <li><a href="#">Резултаты</a></li>
+                            <li><a href="#">Галерея</a></li>
+                            <li><a href="#">Контакты</a></li>
+                        </ul>
+                        <ul>
+                            <li ._title>
+                                <span>Все курсы</span>
+                            </li>
+                            <li><a href="#">Beginner</a></li>
+                            <li><a href="#">Elementary</a></li>
+                            <li><a href="#">Pre-intermediate</a></li>
+                            <li><a href="#">Intermediate</a></li>
+                            <li><a href="#">IELTS 6+</a></li>
+                            <li><a href="#">IELTS 7+</a></li>
+                            <li><a href="#">IELTS 7.5+</a></li>
+                        </ul>
+                    </div>
+                    <div .col width="400px">
+                        <p display="flex"><span .fas.fa-location-dot></span><span>{{ setting.address1 }}</span></p>
+                        <p display="flex"><span .fas.fa-location-dot></span><span>{{ setting.address2 }}</span></p>
+                        <p><span .fas.fa-phone></span><a href="tel:{{ setting.phone1 }}">{{ setting.phone1 }}</a></p>
+                        <p><span .fas.fa-phone opacity="0"></span><a href="tel:{{ setting.phone2 }}">{{ setting.phone2 }}</a></p>
+                        <p><span .fas.fa-envelope></span><a
+                                href="{{ setting.email }}">{{ setting.email }}</a></p>
+                        <div display="flex">
+                            <div .icon>
+                                <a href=":{{ setting.telegram }}" color="#fff">
+                                    <span .fa-brands.fa-telegram></span>
+                                </a>
+                            </div>
+                            <div .icon>
+                                <a href="{{ setting.instagram }}" color="#fff">
+                                    <span .fa-brands.fa-instagram></span>
+                                </a>
+                            </div>
+                            <div .icon>
+                                <a href="{{ setting.facebook }}" color="#fff">
+                                    <span .fa-brands.fa-facebook-f></span>
+                                </a>
+                            </div>
+                            <div .icon>
+                                <a href="{{ setting.youtube }}" color="#fff">
+                                    <span .fa-brands.fa-youtube></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div display="flex" justifyContent="center" marginTop="35px">
+                <span>2022 <a href="#" color="#fff" textDecoration="none">@English with Tim</a></span>
+            </div>
+        </section>
+    </footer>
+    <!-- /footer -->
+
+
+    <!-- main scripts -->
+    <script src="/static/assets/js/jquery.js"></script>
+    <script src="/static/assets/js/splide.min.js" charset="utf-8"></script>
+    <script src="/static/assets/js/core.js"></script>
+    <script src="/static/assets/js/main.js"></script>
+    <!-- /main scripts -->
+
+</body>
+
+</html>

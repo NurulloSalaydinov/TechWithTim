@@ -1,0 +1,92 @@
+{% extends 'tech_admin/tech_wrapper.html' %}
+
+{% block content %}
+<div class="mini-cards">
+    <div style="display: flex; justify-content: space-between;" class="container">
+        <div class="cardy" style="background-color: rgb(98, 191, 196);">
+            <div class="card-icon">
+                <img src="/static/assets/images/icons/profile.svg">
+            </div>
+            <div class="title">
+                <p>Visitors</p>
+            </div>
+            <h1 class="count">
+                <span>{{ info.visitors }}</span>
+            </h1>
+            {% if info.is_new %}
+            <p class="btn padding"
+                style="background:rgb(98, 191, 196);position:absolute;left:-25px;top: -5px;transform: rotate(-45deg)">
+                New</p>
+            {% endif %}
+            <br>
+        </div>
+        <div class="cardy" style="background-color: rgb(144, 129, 215);">
+            <div class="card-icon">
+                <img src="/static/assets/images/icons/up_to_right_arrow.svg">
+            </div>
+            <div class="title">
+                <p>Visits</p>
+            </div>
+            <h1 class="count">
+                <span>{{ info.visits }}</span>
+            </h1>
+            {% if info.is_new %}
+            <p class="btn padding"
+                style="background:rgb(144, 129, 215);position:absolute;left:-25px;top: -5px;transform: rotate(-45deg)">
+                New</p>
+            {% endif %}
+            <br>
+        </div>
+        <div class="cardy" style="background-color: rgb(253, 42, 63);">
+            <div class="card-icon">
+                <img src="/static/assets/images/icons/profile-circle.svg">
+            </div>
+            <div class="title">
+                <p>Registrated</p>
+            </div>
+            <h1 class="count">
+                <span>{{ info.registerated }}</span>
+            </h1>
+            {% if info.is_new %}
+            <p class="btn padding"
+                style="background:rgb(253, 42, 63);position:absolute;left:-25px;top: -5px;transform: rotate(-45deg)">New
+            </p>
+            {% endif %}
+            <br>
+        </div>
+    </div>
+</div>
+
+{% block script %}
+<script>
+    window.addEventListener('load', () => {
+        let d = {
+            'set_false': 'set_false'
+        }
+        let data = JSON.stringify(d)
+        if (window.XMLHttpRequest) {
+            var xhttp = new XMLHttpRequest();
+        } else { // code for IE6, IE5
+            var xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState === 4 && xhttp.status === 200) {
+                var data = JSON.parse(this.responseText);
+                if (data["status" === 404]) {
+                }
+            } else {
+
+            }
+        }
+        var url = "/admin/set_false/"
+        xhttp.open("GET", url + `?data=${data}`, true);
+        xhttp.send();
+    })
+</script>
+{% endblock %}
+
+{% block modal %}
+
+{% endblock %}
+
+{% endblock %}

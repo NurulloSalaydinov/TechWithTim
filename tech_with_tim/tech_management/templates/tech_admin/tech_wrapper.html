@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/assets/css/admin.css">
+    <link rel="shortcut icon" href="/static/assets/media/logo/logo.png" type="image/x-icon">
+    <title>{% block title %}{% endblock %} Admin</title>
+</head>
+
+<body>
+
+    <div class="left-panel collapsed">
+        <div class="toggle-panel">
+            <div class="logo">
+                <a href="/">Admin</a>
+            </div>
+            <div class="toggler">
+                <div class="toggler-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div class="link-list">
+            <ul ionic class="list">
+                <li icon="panel" class="item active"><a href="{% url 'tech:home' %}">Admin</a></li>
+                <li icon="course" class="item"><a href="{% url 'tech:course' %}">Courses</a></li>
+                <li icon="teacher" class="item"><a href="{% url 'tech:teacher' %}">Teachers</a></li>
+                <li icon="faq" class="item"><a href="{% url 'tech:faq' %}">FAQ</a></li>
+                <li icon="gallery" class="item"><a href="{% url 'tech:gallery' %}">Gallery</a></li>
+                <li icon="sms" class="item"><a href="{% url 'tech:contact' %}">Contacts</a></li>
+                <li icon="settings" class="item"><a href="{% url 'tech:settings' %}">Settings</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div main class="container open">
+        <header>
+            <div class="user">
+                <div class="user-info">
+                    <div class="user-image">
+                        <img src="//picsum.photos/50" alt="user">
+                    </div>
+                    <div class="user-info-name">
+                        <p>Welcome</p>
+                        <h1 fontsize="24px" style="font-size: 24px;">{{ request.user.username }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="search-panel" style="width: 100%;">
+                <div class="search-panel-input">
+                    <input type="text" placeholder="Search...">
+                </div>
+                <a href="{% url 'tech:logout' %}" class="btn padding" style="position: absolute; top: 30px; right: 75px;color: #000;background: #eee;border-radius: 10px">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Logout
+                </a>
+            </div>
+        </header>
+        {% block content %}
+        
+        {% endblock %}
+    </div>
+    <script src="/static/assets/js/jquery.js"></script>
+    <script src="/static/assets/js/admin.js"></script>
+    {% block script %}
+
+    {% endblock %}
+
+
+</body>
+
+</html>

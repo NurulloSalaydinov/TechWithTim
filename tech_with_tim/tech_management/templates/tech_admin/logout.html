@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English With Tim | Logout</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            font-family: monospace;
+            flex-direction: column;
+            justify-content: center;
+            background: url('https://browsecat.net/sites/default/files/login-backgrounds-128292-582669-5455043.png');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>You have logged out</h1>
+    <h2>
+        <a href="{% url 'tech:login' %}">Log in</a>
+    </h2>
+</body>
+</html>

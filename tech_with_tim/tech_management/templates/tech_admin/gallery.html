@@ -1,0 +1,72 @@
+{% extends 'tech_admin/tech_wrapper.html' %}
+
+{% block content %}
+<div style="padding: 20px;" class="end line">
+    <a href="#" class="link" id="edit">
+        Edit
+    </a>
+    <div class="icon" id="edit">
+        <span class="fas fa-pen"></span>
+    </div>
+</div>
+<div class="container gallery">
+    <div class="row" style="display: flex;flex-wrap: wrap;justify-content: space-around">
+        <!-- gallery Item -->
+        {% for photo in photos %}
+        <div class="col">
+            <img src="{{ photo.photo.url }}">
+            <div class='icon' style="margin-top: 10px;margin-right: 10px">
+                <a href="{% url 'tech:gallery_delete' photo.id %}">
+                    <span class="fas fa-trash"></span>
+                </a>
+            </div>
+            <div class='icon' style="margin-right: 60px;margin-top: 10px">
+                <a href="{% url 'tech:gallery_edit' photo.id %}">
+                    <span class="fas fa-pen"></span>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- /gallery Item -->
+
+    </div>
+</div>
+<center>
+    <button class="btn padding" id="open">
+        <span>Add photo</span>
+    </button>
+</center>
+
+<div class="modal">
+    <div class="box" style="display: none; height: auto;">
+        <div style="position: relative;" class="title">
+            <span>Photo</span>
+            <div type="button" style="position: absolute; right: 0px; top: 0px;">
+                <span class="fas fa-times" id="hide"></span>
+            </div>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                {{ form }}
+            </div>
+            <div>
+                <div>
+                    <input type="submit" value="Add photo" class="padding btn">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+    $('#edit').click(function () {
+        if ($('#edit').text() == 'cancel') $('#edit').text('edit')
+        else $('#edit').text('cancel')
+        $('.gallery .col').toggleClass('onDelete');
+    });
+</script>
+{% endblock %}

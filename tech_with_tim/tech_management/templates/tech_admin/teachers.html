@@ -1,0 +1,101 @@
+{% extends 'tech_admin/tech_wrapper.html' %}
+
+{% block content %}
+
+<style>
+    label {
+        margin-top: 20px;
+    }
+</style>
+
+<div style="padding: 20px;" class="end line">
+    <a href="#" class="link" id="edit">edit</a>
+    <div class="icon" id="edit">
+        <span class="fas fa-pen"></span>
+    </div>
+</div>
+<div style="margin-top: 30px;" class="container">
+    <div class="cards">
+        <div class="row" style="display: flex;flex-wrap: wrap;justify-content: space-around">
+
+            <!-- Teacher card -->
+            {% for teacher in teachers %}
+            <div class="card" style="margin: 10px;">
+                <div class="top">
+                    <div class="img">
+                        <img src="{{ teacher.image.url }}" alt="user" style="width: 200px;">
+                    </div>
+                    <div class="content">
+                        <h3>
+                            <b>{{ teacher.teacher_name }}</b>
+                        </h3>
+                        <ul style="display: flex; margin-top: 30px;font-size: 25px">
+                            <li><a href="{{ teacher.facebook }}"><span class="fa-brands fa-facebook"></span></a></li>
+                            <li><a href="{{ teacher.twitter }}"><span class="fa-brands fa-twitter"></span></a></li>
+                            <li><a href="{{ teacher.instagram }}"><span class="fa-brands fa-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="icon">
+                        <a href="{% url 'tech:teacher_delete' teacher.id %}">
+                            <span class="fas fa-trash"></span>
+                        </a>
+                    </div>
+                    <div class="icon" style="margin-right: 50px;">
+                        <a href="{% url 'tech:teacher_edit' teacher.id %}">
+                            <span class="fas fa-pen"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <p>
+                        {{ teacher.about }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- /Teacher card -->
+
+        </div>
+    </div>
+</div>
+<center style='margin-top: 30px;'>
+    <button class="btn padding" id="open">
+        <span>Add teacher</span>
+    </button>
+</center>
+
+<div class="modal">
+    <div class="box" style="display: none;">
+        <div style="position: relative;" class="title">
+            <span>Add teacher</span>
+            <div type="button" style="position: absolute; right: 0px; top: 0px;">
+                <span class="fas fa-times" id="hide"></span>
+            </div>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                {{ form }}
+            </div>
+            <div>
+                <div>
+                    <input type="submit" value="Add teacher" class="padding btn">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    $('#edit').click(function () {
+        if ($('#edit').text() == 'cancel') $('#edit').text('edit')
+        else $('#edit').text('cancel')
+        $('.card').toggleClass('onDelete');
+    });
+</script>
+
+{% endblock %}

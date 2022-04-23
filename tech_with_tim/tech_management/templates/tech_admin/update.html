@@ -1,0 +1,40 @@
+{% extends 'tech_admin/index.html' %}
+
+{% block title %}Update | {% endblock %}
+
+{% block modal %}
+
+<style>
+    .is-active-modal-only {
+        display: block !important;
+    }
+    label {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="modal" style="display: block">
+    <div class="box is-active-modal-only" style="display: block">
+        <div style="position: relative;" class="title">
+            <span>Update</span>
+            <div type="button" style="position: absolute; right: 0px; top: 0px;">
+                <a href="{% url 'tech:home' %}">
+                    <span class="fas fa-times" id="hide"></span>
+                </a>
+            </div>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                {{ form }}
+            </div>
+            <div>
+                <div>
+                    <input type="submit" value="Save Changes" class="padding btn">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

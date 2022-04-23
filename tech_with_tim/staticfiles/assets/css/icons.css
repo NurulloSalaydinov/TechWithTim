@@ -1,0 +1,39 @@
+.left-panel .list li, li.item{
+    position: relative;
+    display: flex;
+}
+.left-panel .list li:before, [ionic] li:before {
+    content: '';
+    width: 30px;
+    height: 30px;
+    margin-right: 18px;
+    background-repeat: no-repeat;
+}
+
+.list li:not(.active):before {
+    opacity: .7;
+}
+
+.item[icon='panel']:before {
+    background-image: url('../images/icons/admin.svg');
+}
+.item[icon='course']:before {
+    background-image: url('../images/icons/edit.svg');
+}
+.item[icon='teacher']:before {
+    background-image: url('../images/icons/people.svg');
+}
+.item[icon='faq']:before {
+    background-image: url('../images/icons/receipt-item.svg');
+}
+.item[icon='gallery']:before {
+    background-image: url('../images/icons/gallery.svg');
+}
+
+.item[icon='sms']:before {
+    background-image: url('../images/icons/sms.svg');
+}
+
+.item[icon='settings']:before {
+    background-image: url('../images/icons/setting.svg');
+}

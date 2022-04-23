@@ -1,0 +1,87 @@
+{% extends 'tech_admin/tech_wrapper.html' %}
+
+{% block content %}
+
+<style>
+    label {
+        margin-top: 20px;
+    }
+</style>
+
+<div style="padding: 20px;" class="end line">
+    <a href="#" class="link" id="edit">
+        Edit
+    </a>
+    <div class="icon" id="edit">
+        <span class="fas fa-pen"></span>
+    </div>
+</div>
+<div class="container">
+    <div class="faqs">
+        <div class="row">
+
+            <!-- FAQ item -->
+            {% for faq in faqs %}
+            <div class="faq">
+                <div class="faq-question">
+                    <span>{{ faq.question }}</span>
+                    <div class='icon'>
+                        <a href="{% url 'tech:faq_delete' faq.id %}">
+                            <span class="fas fa-trash"></span>
+                        </a>
+                    </div>
+                    <div class='icon' style="margin-right: 50px;">
+                        <a href="{% url 'tech:faq_edit' faq.id %}">
+                            <span class="fas fa-pen"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <span>{{ faq.answer }}</span>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- /FAQ item -->
+
+        </div>
+    </div>
+    <center style='margin-top: 30px;'>
+        <button class="btn padding" id="open">
+            <span>Add FAQ</span>
+        </button>
+    </center>
+</div>
+
+<div class="modal">
+    <div class="box" style="display: none; height: auto">
+        <div style="position: relative;" class="title">
+            <span>FAQ</span>
+            <div type="button" style="position: absolute; right: 0px; top: 0px;">
+                <span class="fas fa-times" id="hide"></span>
+            </div>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                {{ form }}
+            </div>
+            <div>
+                <div>
+                    <input type="submit" value="Add FAQ" class="padding btn">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+    $('#edit').click(function () {
+        if ($('#edit').text() == 'cancel') $('#edit').text('edit')
+        else $('#edit').text('cancel')
+        $('.faqs .faq').toggleClass('onDelete');
+    });
+</script>
+{% endblock %}
