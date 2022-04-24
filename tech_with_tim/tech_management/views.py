@@ -3,6 +3,8 @@ from django.views.generic.edit import DeleteView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.admin.views.decorators import staff_member_required as staffonly
 from django.http import JsonResponse
+from django.db.models import Q
+import json
 from main.models import *
 from .forms import *
 
@@ -131,6 +133,23 @@ def set_false(request):
     info.save()
     return JsonResponse({'success': 200})
 
+def search(request):
+    key = request.GET.get('key')
+    if key == None:
+        key = ''
+    course = Course.objects.filter(Q(course_name__contains=f'{key}'))
+    teacher = Teacher.objects.filter(Q(teacher_name__contains=f'{key}'))
+    faq = Faq.objects.filter(Q(question__contains=f'{key}') | Q(answer__contains=f'{key}'))
+    photo = Photo.objects.filter(photo__contains=f'{key}')
+    contact = Contact.objects.filter(name__contains=f'{key}')
+    context = {
+        'courses': course,
+        'teachers': teacher,
+        'faqs': faq,
+        'photos': photo,
+        'key': key
+    }
+    return render(request, 'tech_admin/search.html', context)
 
 # course extra functions
 @staffonly(login_url='/admin/login/')

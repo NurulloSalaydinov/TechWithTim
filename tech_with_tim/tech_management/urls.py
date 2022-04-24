@@ -14,6 +14,7 @@ urlpatterns = [
     path('login/', views.admin_login, name="login"),
     path('logout/', views.admin_logout, name="logout"),
     path('set_false/', views.set_false, name="set_false"),
+    path('search/', views.search, name='search'),
 
 
     path('courses/edit/<int:pk>/', views.courseedit, name="course_edit"),

@@ -1,111 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/assets/css/admin.css" />
-    <link
-      rel="shortcut icon"
-      href="/static/assets/media/logo/logo.png"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="/static/assets/media/logo/logo.png" type="image/x-icon" />
     <title>{% block title %}{% endblock %} Admin</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="left-panel collapsed">
-      <div class="toggle-panel">
-        <div class="logo">
-          <a href="/">Admin</a>
+        <div class="toggle-panel">
+            <div class="logo">
+                <a href="/">Admin</a>
+            </div>
+            <div class="toggler">
+                <div class="toggler-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </div>
-        <div class="toggler">
-          <div class="toggler-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+        <div class="link-list">
+            <ul ionic class="list">
+                <li icon="panel" class="item active">
+                    <a href="{% url 'tech:home' %}">Admin</a>
+                </li>
+                <li icon="course" class="item">
+                    <a href="{% url 'tech:course' %}">Courses</a>
+                </li>
+                <li icon="teacher" class="item">
+                    <a href="{% url 'tech:teacher' %}">Teachers</a>
+                </li>
+                <li icon="faq" class="item">
+                    <a href="{% url 'tech:faq' %}">FAQ</a>
+                </li>
+                <li icon="gallery" class="item">
+                    <a href="{% url 'tech:gallery' %}">Gallery</a>
+                </li>
+                <li icon="sms" class="item">
+                    <a href="{% url 'tech:contact' %}">Contacts</a>
+                </li>
+                <li icon="settings" class="item">
+                    <a href="{% url 'tech:settings' %}">Settings</a>
+                </li>
+            </ul>
         </div>
-      </div>
-      <div class="link-list">
-        <ul ionic class="list">
-          <li icon="panel" class="item active">
-            <a href="{% url 'tech:home' %}">Admin</a>
-          </li>
-          <li icon="course" class="item">
-            <a href="{% url 'tech:course' %}">Courses</a>
-          </li>
-          <li icon="teacher" class="item">
-            <a href="{% url 'tech:teacher' %}">Teachers</a>
-          </li>
-          <li icon="faq" class="item">
-            <a href="{% url 'tech:faq' %}">FAQ</a>
-          </li>
-          <li icon="gallery" class="item">
-            <a href="{% url 'tech:gallery' %}">Gallery</a>
-          </li>
-          <li icon="sms" class="item">
-            <a href="{% url 'tech:contact' %}">Contacts</a>
-          </li>
-          <li icon="settings" class="item">
-            <a href="{% url 'tech:settings' %}">Settings</a>
-          </li>
-        </ul>
-      </div>
     </div>
-
     <div main class="container open">
-      <header>
-        <div class="user">
-          <div class="user-info">
-            <div class="user-image">
-              <img src="//picsum.photos/50" alt="user" />
+        <header>
+            <div class="user">
+                <div class="user-info">
+                    <div class="user-image">
+                        <img src="//picsum.photos/50" alt="user" />
+                    </div>
+                    <div class="user-info-name">
+                        <p>Welcome</p>
+                        <h1 fontsize="24px" style="font-size: 24px">
+                            {{ request.user.username }}
+                        </h1>
+                    </div>
+                </div>
             </div>
-            <div class="user-info-name">
-              <p>Welcome</p>
-              <h1 fontsize="24px" style="font-size: 24px">
-                {{ request.user.username }}
-              </h1>
-            </div>
-          </div>
-        </div>
-        <div class="search-panel" style="width: 100%">
-          <div class="search-panel-input" style="position: relative">
-            <input type="text" placeholder="Search..." />
-            <div
-              class="search-modal"
-            >
-              <ul class="search-results">
-                <li>
-                  <a href="#">result 1</a>
-                </li>
-                <li>
-                  <a href="#">result 2</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <a
-            href="{% url 'tech:logout' %}"
-            class="btn padding"
-            style="
+            <div class="search-panel" style="width: 100%">
+                <div class="search-panel-input" style="position: relative">
+                    <form method="get" action="{% url 'tech:search' %}">
+                        <input type="text" name="key" placeholder="Search..." id="search_input">
+                    </form>
+                    <script>
+                        let input = document.querySelector('#search_input');
+                        input.addEventListener('change', () => {
+                            console.log('input changed')
+                            document.querySelector('form').submit()
+                        })
+                    </script>
+                    <div class="search-modal">
+                        <ul class="search-results">
+                            <li>
+                                <a href="#">result 1</a>
+                            </li>
+                            <li>
+                                <a href="#">result 2</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="{% url 'tech:logout' %}" class="btn padding" style="
               position: absolute;
               top: 30px;
               right: 75px;
               color: #000;
               background: #eee;
               border-radius: 10px;
-            "
-          >
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            Logout
-          </a>
-        </div>
-      </header>
-      {% block content %} {% endblock %}
+            ">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Logout
+                </a>
+            </div>
+        </header>
+        {% block content %} {% endblock %}
     </div>
     <script src="/static/assets/js/jquery.js"></script>
     <script src="/static/assets/js/admin.js"></script>
+    <!--<script>
+    // let input = document.querySelector('#search_input');
+    // input.addEventListener('onchange', () => {
+    //     let d = {
+    //         value: value,
+    //     }
+    //     let data = JSON.stringify(d)
+    //     if (window.XMLHttpRequest) {
+    //         var xhttp = new XMLHttpRequest();
+    //     } else { // code for IE6, IE5
+    //         var xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    //     }
+    //     xhttp.onreadystatechange = function() {
+    //         if (xhttp.readyState === 4 && xhttp.status === 200) {
+    //             var data = JSON.parse(this.responseText);
+    //             let data_objects = data['data']
+    //             let elem = ''
+    //             for (var i = 0; i < data_objects.length; i++) {
+    //                 let object = `<a href="/books-detail/${data_objects[i].id}/">
+    //                         <li>
+    //                             <img src="/media/${data_objects[i].image}" width="96px" height="96px" alt="">
+    //                             <div class="text-content d-inline-block">
+    //                                 ${data_objects[i].title} <br> ${data_objects[i].author_pen} <i class="fa-solid fa-heart text-danger"></i> ${data_objects[i].likes_count}
+    //                             </div>
+    //                         </li>
+    //                     </a>`
+    //                 elem += object
+    //             }
+    //             document.querySelector('#add_here').innerHTML = elem
+    //             elem = ''
+    //         } else {
+    //             console.log('Not yet')
+    //         }
+    //     }
+    //     var url = "/search/"
+    //     xhttp.open("GET", url + `?data=${data}`, true);
+    //     xhttp.send();
+    // })
+    // </script>-->
     {% block script %} {% endblock %}
-  </body>
+</body>
+
 </html>
