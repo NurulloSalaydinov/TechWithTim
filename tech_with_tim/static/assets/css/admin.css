@@ -119,6 +119,7 @@ body>.container {
     height: 5px;
     border-radius: 50%;
     border: 1px solid #6B6D73;
+    z-index: 1;
 }
 
 .search-panel::after {
@@ -135,6 +136,29 @@ body>.container {
 
 .search-panel .search-panel-input {
     width: 350px;
+    position: relative;
+}
+
+.search-panel-input .search-modal {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 15px;
+    border-radius: 4Q;
+    box-shadow: 1px 0 15px rgba(0, 0, 0, 0.1);
+    word-break: break-all;
+    z-index: 1;
+    display: none;
+}
+
+.search-modal a {
+    color: #000;
+}
+
+.search-modal ul li:not(:last-child) {
+    margin-bottom: 15px;
 }
 
 .search-panel input {
@@ -188,13 +212,12 @@ body>.container {
 .left-panel .link-list .list .item a {
     text-decoration: none;
     color: #fff;
-    opacity: .7;
-    font-size: 24px
+    font-size: 24px;
 }
 
-.left-panel .link-list .list .item.active a {
+/* .left-panel .link-list .list .item.active a {
     opacity: 1;
-}
+} */
 
 .mini-cards {
     flex-wrap: wrap;
@@ -286,61 +309,19 @@ span[action] {
     width: 10px;
 }
 
-form input, form select, form  textarea {
+form input, form select, form textarea {
     padding: 12px 15px;
     border: 2px solid #6B6D73;
     box-sizing: border-box;
     border-radius: 10px;
+    font-size: 16px;
 }
 
 .cards {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
-/* @media screen and (max-width: 776px) {
-    body {
-        overflow-x: hidden;
-    }
-
-    body>.container.open, body>.container.active {
-        width: 100% !important;
-    }
-
-    .left-panel {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1;
-    }
-
-    .search-panel {
-        display: none;
-    }
-
-    .left-panel.collapsed {
-        width: 30px;
-        height: var(--t-header-height) !important;
-        position: absolute !important;
-    }
-
-    .left-panel.collapsed .toggle-panel {
-        border-bottom: none !important;
-    }
-
-    .cardy:not(:first-child) {
-        margin-top: 30px !important;
-    }
-
-
-    [main].container>div {
-        margin-left: 10px !important;
-    }
-
-    .edit-panel {
-        width: 100% !important;
-    }
-} */
 
 .cards .card {
     max-width: 400px !important;
@@ -365,7 +346,7 @@ img {
     transform: scale(1.1);
 }
 
-.card .img, .card .top, .faq-question{
+.card .img, .card .top, .faq-question {
     position: relative;
     overflow: hidden;
 }
@@ -377,12 +358,16 @@ img {
     opacity: 0;
 }
 
+.icon a {
+    color: #000;
+}
+
 .card .top .icon {
     right: 0px;
     top: 0px;
 }
 
-.faq-question .icon  {
+.faq-question .icon {
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
@@ -503,25 +488,6 @@ img {
     transition: 250ms;
 }
 
-.messages.empty::after {
-    content: 'No Messages';
-    font-size: 40px;
-    position: absolute;
-    top: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.messages.empty::before {
-    content: attr(data-emoji);
-    font-size: 50px;
-    font-weight: bold;
-    position: absolute;
-    top: 160px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 .messages .sms .top {
     display: flex;
     align-items: center;
@@ -576,19 +542,19 @@ img {
 }
 
 .modal .icon {
-  border: 1px solid #000;
-  background: rgba(0,0,0,0.1);
-  border-radius: 0;
-  border-top-left-radius: 10px;
-  padding: 15px;
-  border: 2px solid #6B6D73;
-  border-right: 0;
-  border-bottom-left-radius: 10px;
+    border: 1px solid #000;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    border-top-left-radius: 10px;
+    padding: 15px;
+    border: 2px solid #6B6D73;
+    border-right: 0;
+    border-bottom-left-radius: 10px;
 }
 
 .modal .icon {
-  color: #000;
-  background: rgba(0,0,0,0.15);
+    color: #000;
+    background: rgba(0, 0, 0, 0.15);
 }
 
 .line a {
@@ -655,19 +621,19 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     z-index: 10;
     backdrop-filter: blur(10px);
     display: none;
 }
 
-.modal .box .title{
+.modal .box .title {
     font-size: 24px;
     font-weight: bold;
 }
 
 .modal .box {
-    background :#fff;
+    background: #fff;
     max-width: 650px;
     padding: 12px 20px;
     border-radius: 10px;
@@ -682,36 +648,36 @@ img {
     max-height: 700px;
 }
 
-.modal .box form > div {
+.modal .box form>div {
     display: flex;
     flex-direction: column;
 }
 
-.modal .box form label{
+.modal .box form label {
     font-size: 18px;
     margin-bottom: 5px;
 }
 
 
-.modal .box form > div {
+.modal .box form>div {
     margin: 20px 0;
 }
 
-.modal .box form > div.field {
-  flex-direction: row;
+.modal .box form>div.field {
+    flex-direction: row;
 }
 
-.modal .box form > div.field label{
-  margin-bottom: 0;
+.modal .box form>div.field label {
+    margin-bottom: 0;
 }
 
-.modal .box form > div.field input{
-  border-left: none;
-  width: 90%;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+.modal .box form>div.field input {
+    border-left: none;
+    width: 90%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .modal form label {
-  display: flex;
+    display: flex;
 }

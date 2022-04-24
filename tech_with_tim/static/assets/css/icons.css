@@ -10,9 +10,12 @@
     background-repeat: no-repeat;
 }
 
+/* ? if link has not class "active" it's opacity would be .7 */
+
+/* 
 .list li:not(.active):before {
     opacity: .7;
-}
+} */
 
 .item[icon='panel']:before {
     background-image: url('../images/icons/admin.svg');

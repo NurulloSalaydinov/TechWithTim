@@ -785,8 +785,42 @@ textarea {
     }
 }
 
+@media screen and (max-height: 700px) {
+  .absolute.img[m] img{
+    width: 1200px !important;
+  }
+}
 
+@media screen and (max-width: 1600px) {
+  .message[c] {
+    left: -200px !important;
+    top: 100px !important;
+  }
+  .message[a] {
+    left: -300px !important;
+  }
+  .message[d] {
+    left: 350px !important;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  header .nav-links li {
+    margin: 0 20px !important;
+  }
+}
 @media screen and (max-width: 1124px) {
+  .message[c] {
+    left: -200px !important;
+    top: 100px !important;
+  }
+  .message[a] {
+    left: -350px !important;
+    top: -300px !important;
+  }
+  .message[d] {
+    left: 150px !important;
+  }
     header .burger {
       display: block !important;
     }
@@ -838,6 +872,18 @@ textarea {
 }
 
 @media screen and (max-width: 768px) {
+  .message[c] {
+    left: 0px !important;
+    top: 40px !important;
+  }
+  .message[a] {
+    left: -350px !important;
+    top: -300px !important;
+  }
+  .message[d] {
+    right: 0 !important;
+    left: 240px !important;
+  }
     .owl-item.active {
         display: flex;
     }
@@ -952,39 +998,4 @@ textarea {
     #results .cards .card {
         flex-direction: column !important;
     }
-}
-
-/* owl carousel default options */
-.owl-dots {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px
-}
-
-.owl-dots .owl-dot span {
-    width: 10px;
-    height: 10px;
-    margin: 5px 7px;
-    background: #1a1a1a;
-    display: block;
-    opacity: .5;
-    -webkit-backface-visibility: visible;
-    transition: opacity .2s ease;
-    border-radius: 30px
-}
-
-.owl-dots .owl-dot.active span,
-.owl-theme .owl-dots .owl-dot:hover span {
-    background: #1a1a1a;
-    opacity: 1
-}
-
-.owl-theme[light] .owl-dots .owl-dot span {
-    background: #fff;
-    opacity: .5
-}
-
-.owl-theme .owl-dots .owl-dot:hover span,
-.owl-theme[light] .owl-dots .owl-dot.active span {
-    opacity: 1
 }

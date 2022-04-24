@@ -42,7 +42,7 @@
                 <img src="/static/assets/images/icons/profile-circle.svg">
             </div>
             <div class="title">
-                <p>Registrated</p>
+                <p>Contacts</p>
             </div>
             <h1 class="count">
                 <span>{{ info.registerated }}</span>
@@ -66,7 +66,8 @@
         let data = JSON.stringify(d)
         if (window.XMLHttpRequest) {
             var xhttp = new XMLHttpRequest();
-        } else { // code for IE6, IE5
+        } else { 
+            //  for IE6, IE5
             var xhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         xhttp.onreadystatechange = function () {

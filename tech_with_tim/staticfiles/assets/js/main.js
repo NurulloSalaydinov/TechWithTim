@@ -88,15 +88,16 @@ var splide = new Splide('#splide4', {
       autoWidth: false
     },
     1950: {
-      perPage: 4
+      perPage: 4,
+      autoWidth: true
     },
     1500: {
-      perPage: 2
+      perPage: 2,
+      autoWidth: true
     },
-
   }
 });
-splide.mount()
+splide.mount();
 
 
 var splide2 = new Splide('#splide3', {
