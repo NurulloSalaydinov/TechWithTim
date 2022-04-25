@@ -15,7 +15,52 @@
     </div>
 </div>
 <div style="margin-top: 30px;" class="container">
+    <h1>{{ key }}</h1>
+    <br>
     <div class="cards">
+
+        <div class="row" style="display: flex;flex-wrap: wrap;justify-content: space-around">
+
+            {% for result in results %}
+            <div class="card" style="margin: 10px;">
+                <div class="top">
+                    <div class="img">
+                        <img src="{{ result.image.url }}" alt="user" style="width: 200px;">
+                    </div>
+                    <div class="content">
+                        <h3>
+                            <b>{{ result.teacher_name }}</b>
+                        </h3>
+                        <ul style="display: flex; margin-top: 30px;font-size: 25px">
+                            <li><a href="{{ result.facebook }}"><span class="fa-brands fa-facebook"></span></a></li>
+                            <li><a href="{{ result.twitter }}"><span class="fa-brands fa-twitter"></span></a></li>
+                            <li><a href="{{ result.instagram }}"><span class="fa-brands fa-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="icon">
+                        <a href="{% url 'tech:teacher_delete' result.id %}">
+                            <span class="fas fa-trash"></span>
+                        </a>
+                    </div>
+                    <div class="icon" style="margin-right: 50px;">
+                        <a href="{% url 'tech:teacher_edit' result.id %}">
+                            <span class="fas fa-pen"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <p>
+                        {{ result.about }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% if results.exists %}
+        <div style="width: 99%;height: 1px;background: black"></div>
+        <br>
+        <br>
+        {% endif %}
         <div class="row" style="display: flex;flex-wrap: wrap;justify-content: space-around">
 
             <!-- Teacher card -->

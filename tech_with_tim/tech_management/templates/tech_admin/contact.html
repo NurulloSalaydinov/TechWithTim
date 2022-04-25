@@ -3,6 +3,66 @@
 {% block content %}
 
 <div style="margin-top: 20px;" class="container">
+
+    <h1>{{ key }}</h1>
+
+    {% for result in results %}
+    <div style="position: relative;" class="messages">
+        <div class="row">
+            <div class="sms">
+                <div class="top" style="position: relative;">
+                    <h1>
+                        {{ result.name }} {{ result.surname }}
+                    </h1>
+                    <div style="margin-left: 30px;margin-top: 5px;">
+                        <p>
+                            <b>User ID:</b> <span>{{ result.uuid }}</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <p>
+                        <strong>
+                            Phone: 
+                        </strong>
+                        <a href="tel:{{ result.phone }}">{{ result.phone }}</a>
+                    </p>
+                    <p>
+                        <strong>
+                            Theme: 
+                        </strong>
+                        {{ result.theme }}
+                    </p>
+                    <p>
+                        <strong>
+                            Message:
+                        </strong>
+                        {{ result.message }}
+                    </p>
+                </div>
+                <div class="footer">
+                    <div>
+                        <span>
+                            Time:
+                        </span>
+                        <span>
+                            {{ result.created_at }}
+                        </span>
+                    </div>
+                    <div>
+                        <a href="{% url 'tech:contact_pin' result.id %}" style="margin-right: 20px">
+                            <span class="fas fa-edit"></span>
+                        </a>
+                        <a href="{% url 'tech:contact_delete' result.id %}" style="margin-right: 10px">
+                            <span class="fas fa-trash"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
     {% if contacts.exists %}
     <h1 style="margin-top: 30px;">
         Contacts

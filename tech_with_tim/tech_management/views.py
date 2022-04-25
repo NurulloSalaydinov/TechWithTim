@@ -19,6 +19,17 @@ def home(request):
 
 @staffonly(login_url='/admin/login/')
 def course(request):
+    key = request.GET.get('key')
+    if key != None and key != '':
+        result = Course.objects.filter(Q(course_name__contains=key) | Q(about__contains=key))
+        if result.exists():
+            info = f'Search results for 👉 {key}'
+        else:
+            info = 'Nothing Found 🤷‍♂️'
+    else:
+        info = ''
+        result = Course.objects.filter(course_name='Empty')
+
     if request.method == 'POST':
         form = CourseForm(request.POST, request.FILES)
         if form.is_valid():
@@ -31,11 +42,24 @@ def course(request):
     context = {
         'courses': courses,
         'form': form,
+        'results': result,
+        'key': info
     }
     return render(request, 'tech_admin/courses.html', context)
 
 @staffonly(login_url='/admin/login/')
 def teacher(request):
+    key = request.GET.get('key')
+    if key != None and key != '':
+        result = Teacher.objects.filter(Q(teacher_name__contains=key) | Q(about__contains=key))
+        if result.exists():
+            info = f'Search results for 👉 {key}'
+        else:
+            info = 'Nothing Found 🤷‍♂️'
+    else:
+        info = ''
+        result = Course.objects.filter(course_name='Empty')
+
     if request.method == 'POST':
         form = TeacherForm(request.POST, request.FILES)
         if form.is_valid():
@@ -48,11 +72,24 @@ def teacher(request):
     context = {
         'teachers': teachers,
         'form': form,
+        'results': result,
+        'key': info
     }
     return render(request, 'tech_admin/teachers.html', context)
 
 @staffonly(login_url='/admin/login/')
 def faq(request):
+    key = request.GET.get('key')
+    if key != None and key != '':
+        result = Faq.objects.filter(Q(question__contains=key) | Q(answer__contains=key))
+        if result.exists():
+            info = f'Search results for 👉 {key}'
+        else:
+            info = 'Nothing Found 🤷‍♂️'
+    else:
+        info = ''
+        result = Course.objects.filter(course_name='Empty')
+
     if request.method == 'POST':
         form = FaqForm(request.POST)
         if form.is_valid():
@@ -65,6 +102,8 @@ def faq(request):
     context = {
         'faqs': faq,
         'form': form,
+        'results': result,
+        'key': info
     }
     return render(request, 'tech_admin/faq.html', context)
 
@@ -87,11 +126,24 @@ def gallery(request):
 
 @staffonly(login_url='/admin/login/')
 def contact(request):
+    key = request.GET.get('key')
+    if key != None and key != '':
+        result = Contact.objects.filter(Q(name__contains=key) | Q(surname__contains=key))
+        if result.exists():
+            info = f'Search results for 👉 {key}'
+        else:
+            info = 'Nothing Found 🤷‍♂️'
+    else:
+        info = ''
+        result = Course.objects.filter(course_name='Empty')
+
     contacts = Contact.objects.filter(is_pinned=False)
     pinnedcontacts = Contact.objects.filter(is_pinned=True)
     context = {
         'contacts': contacts,
         'pinneds': pinnedcontacts,
+        'results': result,
+        'key': info
     }
     return render(request, 'tech_admin/contact.html', context)
 
@@ -133,23 +185,23 @@ def set_false(request):
     info.save()
     return JsonResponse({'success': 200})
 
-def search(request):
-    key = request.GET.get('key')
-    if key == None:
-        key = ''
-    course = Course.objects.filter(Q(course_name__contains=f'{key}'))
-    teacher = Teacher.objects.filter(Q(teacher_name__contains=f'{key}'))
-    faq = Faq.objects.filter(Q(question__contains=f'{key}') | Q(answer__contains=f'{key}'))
-    photo = Photo.objects.filter(photo__contains=f'{key}')
-    contact = Contact.objects.filter(name__contains=f'{key}')
-    context = {
-        'courses': course,
-        'teachers': teacher,
-        'faqs': faq,
-        'photos': photo,
-        'key': key
-    }
-    return render(request, 'tech_admin/search.html', context)
+# def search(request):
+#     key = request.GET.get('key')
+#     if key == None:
+#         key = ''
+#     course = Course.objects.filter(Q(course_name__contains=f'{key}'))
+#     teacher = Teacher.objects.filter(Q(teacher_name__contains=f'{key}'))
+#     faq = Faq.objects.filter(Q(question__contains=f'{key}') | Q(answer__contains=f'{key}'))
+#     photo = Photo.objects.filter(photo__contains=f'{key}')
+#     contact = Contact.objects.filter(name__contains=f'{key}')
+#     context = {
+#         'courses': course,
+#         'teachers': teacher,
+#         'faqs': faq,
+#         'photos': photo,
+#         'key': key
+#     }
+#     return render(request, 'tech_admin/search.html', context)
 
 # course extra functions
 @staffonly(login_url='/admin/login/')

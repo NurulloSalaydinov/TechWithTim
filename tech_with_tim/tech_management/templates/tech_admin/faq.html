@@ -18,6 +18,44 @@
 </div>
 <div class="container">
     <div class="faqs">
+        <h1>{{ key }}</h1>
+        <br>
+        <br>
+        <div class="row">
+
+            <!-- FAQ item -->
+            {% for result in results %}
+            <div class="faq">
+                <div class="faq-question">
+                    <span>{{ result.question }}</span>
+                    <div class='icon'>
+                        <a href="{% url 'tech:faq_delete' result.id %}">
+                            <span class="fas fa-trash"></span>
+                        </a>
+                    </div>
+                    <div class='icon' style="margin-right: 50px;">
+                        <a href="{% url 'tech:faq_edit' result.id %}">
+                            <span class="fas fa-pen"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="faq-answer">
+                    <span>{{ result.answer }}</span>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- /FAQ item -->
+
+        </div>
+        {% if results.exists %}
+        <br>
+        <br>
+        <hr>
+        <hr>
+        <hr>
+        <br>
+        <br>
+        {% endif %}
         <div class="row">
 
             <!-- FAQ item -->

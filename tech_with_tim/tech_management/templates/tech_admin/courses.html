@@ -16,6 +16,47 @@
     <h1 style="margin-top: 100px; text-align: center;">You haven't courses yet.</h1>
 {% endif %}
 <div class="container">
+
+    <h1>{{ key }}</h1>
+    <br>
+    <br>
+    <div class="cards">
+        {% for result in results %}
+        <div class="card">
+            <div class="img top header">
+                <img src="{{ result.image.url }}" alt="Course Image">
+                <div class='icon' style="margin-top: 10px;margin-right: 10px">
+                    <a href="{% url 'tech:course_delete' result.id %}">
+                        <span class="fas fa-trash"></span>
+                    </a>
+                </div>
+                <div class='icon' style="margin-right: 60px;margin-top: 10px">
+                    <a href="{% url 'tech:course_edit' result.id %}">
+                        <span class="fas fa-pen"></span>
+                    </a>
+                </div>
+            </div>
+            <div class='content'>
+                <div class='_title'>
+                    <span>{{ result.course_name }}</span>
+                </div>
+                <div class="_descripton">
+                    <span>{{ result.about }}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% if results.exists %}
+        <br>
+        <br>
+        <hr>
+        <hr>
+        <hr>
+        <br>
+        <br>
+        <br>
+        {% endif %}
     <div class="cards">
         {% for course in courses %}
         <div class="card">

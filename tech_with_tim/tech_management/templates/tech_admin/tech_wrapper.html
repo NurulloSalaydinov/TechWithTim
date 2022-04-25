@@ -67,13 +67,14 @@
             </div>
             <div class="search-panel" style="width: 100%">
                 <div class="search-panel-input" style="position: relative">
-                    <form method="get" action="{% url 'tech:search' %}">
+                    <form method="get">
                         <input type="text" name="key" placeholder="Search..." id="search_input">
                     </form>
                     <script>
                         let input = document.querySelector('#search_input');
                         input.addEventListener('change', () => {
                             console.log('input changed')
+                            document.querySelector('form').prevent()
                             document.querySelector('form').submit()
                         })
                     </script>

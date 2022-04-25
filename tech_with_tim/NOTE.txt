@@ -15,7 +15,7 @@ TIM ADMIN
     DONE--Make it possible to add delete edit gallery
     DONE--Make it possible to delete contacts and pin it
     DONE--Make it possible to edit settings
-    --Make it possible to search
+    DONE--Make it possible to search
 
 
 ||||||||||||||||||||||||||||||||||||||||||||
