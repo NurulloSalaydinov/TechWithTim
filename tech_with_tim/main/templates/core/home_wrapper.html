@@ -30,18 +30,18 @@
     <header background="#fff">
         <div .nav.container>
             <div .img.logo marginTop="5px">
-                <a href="index.html">
+                <a href="/">
                     <img src="/static/assets/media/logo/logo.png" alt="English with Tim" width="70px">
                 </a>
             </div>
             <ul .nav-links>
-                <li><a href="#whywe" .active>Основной</a></li>
-                <li><a href="#courses">Курсы</a></li>
-                <li><a href="#results">Резултаты</a></li>
-                <li><a href="#teachers">Команда</a></li>
-                <li><a href="#">Отзывы</a></li>
-                <li><a href="#gallery">Галерея</a></li>
-                <li><a href="#contact">Контакты</a></li>
+                <li><a href="/">Основной</a></li>
+                <li><a href="/#courses">Курсы</a></li>
+                <li><a href="/#results">Резултаты</a></li>
+                <li><a href="/#teachers">Команда</a></li>
+                <li><a href="/#about-us">Отзывы</a></li>
+                <li><a href="/#gallery">Галерея</a></li>
+                <li><a href="/#contact">Контакты</a></li>
                 <div #move></div>
             </ul>
             <div .burger display="none">
@@ -72,14 +72,14 @@
                     <div .col display="flex" justifyContent="space-between" width="350px">
                         <ul marginRight="50px">
                             <li ._title><span>Меню</span> </li>
-                            <li><a href="#">Основной</a></li>
-                            <li><a href="#">О нас</a></li>
-                            <li><a href="#">Курсы</a></li>
-                            <li><a href="#">Команда</a></li>
-                            <li><a href="#">Отзывы</a></li>
-                            <li><a href="#">Резултаты</a></li>
-                            <li><a href="#">Галерея</a></li>
-                            <li><a href="#">Контакты</a></li>
+                            <li><a href="/">Основной</a></li>
+                            <li><a href="/#about-us">О нас</a></li>
+                            <li><a href="/#courses">Курсы</a></li>
+                            <li><a href="/#teachers">Команда</a></li>
+                            <li><a href="/#about-us">Отзывы</a></li>
+                            <li><a href="/#results">Резултаты</a></li>
+                            <li><a href="/#gallery">Галерея</a></li>
+                            <li><a href="/#contact">Контакты</a></li>
                         </ul>
                         <ul>
                             <li ._title>
@@ -103,7 +103,7 @@
                                 href="{{ setting.email }}">{{ setting.email }}</a></p>
                         <div display="flex">
                             <div .icon>
-                                <a href=":{{ setting.telegram }}" color="#fff">
+                                <a href="{{ setting.telegram }}" color="#fff">
                                     <span .fa-brands.fa-telegram></span>
                                 </a>
                             </div>
@@ -127,7 +127,7 @@
                 </div>
             </div>
             <div display="flex" justifyContent="center" marginTop="35px">
-                <span>2022 <a href="#" color="#fff" textDecoration="none">@English with Tim</a></span>
+                <span>2022 <a href="/" color="#fff" textDecoration="none">@EnglishwithTim</a></span>
             </div>
         </section>
     </footer>
@@ -135,8 +135,8 @@
 
 
     <!-- main scripts -->
+    <script src="/static/assets/js/splide.min.js" ></script>
     <script src="/static/assets/js/jquery.js"></script>
-    <script src="/static/assets/js/splide.min.js" charset="utf-8"></script>
     <script src="/static/assets/js/core.js"></script>
     <script src="/static/assets/js/main.js"></script>
     <!-- /main scripts -->

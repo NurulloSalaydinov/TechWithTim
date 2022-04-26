@@ -2,6 +2,20 @@ from django.shortcuts import render, redirect
 from .models import *
 from .forms import ContactForm
 
+def gallery(req):
+    photo = Photo.objects.all()
+    context = {
+        'photos': photo
+    }
+    return render(req, 'core/gallery.html', context)
+
+def teachers(req):
+    teacher = Teacher.objects.all()
+    context = {
+        'teachers': teacher
+    }
+    return render(req, 'core/teachers.html', context)
+
 def home(request):
     course = Course.objects.all()
     teacher = Teacher.objects.all()

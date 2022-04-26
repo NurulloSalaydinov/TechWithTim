@@ -16,7 +16,6 @@ urlpatterns = [
     path('set_false/', views.set_false, name="set_false"),
     path('search/', views.search, name='search'),
 
-
     path('courses/edit/<int:pk>/', views.courseedit, name="course_edit"),
     path('courses/delete/<int:pk>/', views.coursedelete, name="course_delete"),
 

@@ -80,7 +80,7 @@ img {
   font-weight: bold;
 }
 
-:is(main, header, footer) > .container {
+:is(main, header, footer)>.container {
   height: 100%;
 }
 
@@ -149,23 +149,6 @@ img {
   align-items: center;
 }
 
-.dots {
-  display: flex;
-  flex-wrap: wrap;
-  position: absolute;
-}
-
-.dots .dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  margin-bottom: 8px;
-}
-
-.dots .dot:not(:last-child) {
-  margin-right: 10px;
-}
-
 .absolute.img {
   position: absolute;
 }
@@ -191,9 +174,11 @@ img {
   0% {
     left: 0 !important;
   }
+
   50% {
     left: 300px;
   }
+
   100% {
     left: 0 !important;
   }
@@ -207,6 +192,11 @@ img {
 
 section {
   background: var(--s-main-background);
+}
+
+section:not(#whywe, #courses, #teachers, #about-us, #faq) {
+  background: #fff;
+  padding-top: 40px;
 }
 
 .splide__pagination {

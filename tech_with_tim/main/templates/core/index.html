@@ -423,16 +423,18 @@
                 <span width="450px">Познакомьте с нашими учителями.</span>
             </div>
             <div marginTop="50px" sm:display:none!>
+               <a href="{% url 'main:teachers' %}">
                 <button .btn.default>
                     <span>Все учителя</span>
                     <span .fas.fa-angle-right></span>
                 </button>
+               </a>
             </div>
         </div>
         <div .cards.splide #splide3 light marginTop="20px" width="75%" sm:width:100%!>
             <div .splide__track>
                 <ul .splide__list>
-                    {% for teacher in teachers %}
+                    {% for teacher in teachers|slice:":5" %}
                     <li .splide__slide>
                         <div .card>
                             <div .img>
@@ -480,10 +482,12 @@
             </div>
         </div>
         <div marginTop="50px" sm:display:flex! display="none">
+            <a href="{% url 'main:teachers' %}">
             <button .btn.default>
                 <span>Все учителя</span>
                 <span .fas.fa-angle-right></span>
             </button>
+        </a>
         </div>
     </div>
 </section>
@@ -651,7 +655,7 @@
 </section>
 
 
-<section #gallery background="#fff" paddingTop="40px">
+<section #gallery>
     <div .container>
         <div>
             <button .btn.sm background="#28314B" color="#fff">
@@ -663,16 +667,18 @@
                 <span>Наша фотографии</span>
             </div>
             <div sm:display:none!>
-                <button .btn.default>
-                    <span>Все фото</span>
-                    <span .fas.fa-angle-right></span>
-                </button>
+                <a href="{% url 'main:gallery' %}">
+                    <button .btn.default>
+                        <span>Все фото</span>
+                        <span .fas.fa-angle-right></span>
+                    </button>
+                </a>
             </div>
         </div>
     </div>
     <div .gallery.container>
         <div .row flexWrap="wrap">
-            {% for photo in photos %}
+            {% for photo in photos|slice:":6" %}
             <div .col width="31.6%" style="margin: 10px auto">
                 <div .img>
                     <img src="{{ photo.photo.url }}" width="100%" height="100%" alt="{{ photo.photo }}">

@@ -1,0 +1,64 @@
+{% extends "core/home_wrapper.html" %} {% block content%}
+
+<!-- Click photo to check out the modal -->
+<section #gallery background="#fff" paddingTop="40px" display="block">
+  <div .container>
+    <button .btn.sm background="#28314B" color="#fff">
+      <span>Our <span .marked>gallery</span></span>
+    </button>
+    <div .title>
+      <span>Наша фотографии</span>
+    </div>
+  </div>
+  <div class="grid" >
+    <div class="grid-sizer"></div>
+    {% for photo in photos %}
+    <div
+      class="grid-item"
+      style="background-image: url('{{ photo.photo.url }}')"
+    ></div>
+    {% endfor %}
+  </div>
+  <div class="grid-alpha"></div>
+</section>
+<script src="https://cdn.jsdelivr.net/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
+<script>
+  $(".grid").masonry({
+    itemSelector: ".grid-item",
+    columnWidth: ".grid-sizer",
+    percentPosition: true,
+  });
+  // Modal with transition
+  $(".grid-item").click(function (event) {
+    // Check if not already open
+    $(".grid-item").removeClass("item-opened");
+    if (!$(this).hasClass("item-opened")) {
+      $(this).addClass("item-opened");
+      $("html, body").css("overflow", "hidden");
+    } else {
+      $(".grid").css("overflow", "hidden");
+    }
+  });
+
+  // Close item Modal
+  $(document).on("click", function (e) {
+    if ($(".item-opened").length > 0) {
+      if (
+        !$(e.target).closest(".grid-item").length &&
+        !$(e.target).hasClass("item-opened")
+      ) {
+        $(".grid-alpha").fadeOut(650);
+
+        $("html, body").css("overflow", "auto");
+        $(".grid-item").removeClass("item-opened");
+        setTimeout(function () {
+          $(".grid-item").css("z-index", "0")
+        }, 350);
+        $(".grid").css("overflow", "hidden");
+      }
+    }
+  });
+</script>
+
+{% endblock %}

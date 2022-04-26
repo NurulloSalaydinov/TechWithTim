@@ -1,0 +1,104 @@
+{% extends "core/home_wrapper.html" %} {% block content %}
+
+
+
+<section #teachers .dark>
+<div .container display="block">
+    <button .btn.sm background="#28314B" color="#fff">
+      <span>Our <span .marked>teachers</span></span>
+    </button>
+    <div .title>
+      <span>Наши учителя</span>
+    </div>
+  </div>
+    <div
+      .cards.splide
+      #splide3
+      light
+      marginTop="20px"
+      width="100%"
+    >
+      <div .splide__track>
+        <ul .splide__list>
+          {% for teacher in teachers %}
+          <li .splide__slide>
+            <div .card>
+              <div .img>
+                <img src="{{ teacher.image.url }}" alt="" />
+                <div .share>
+                  <div
+                    .open
+                    display="flex"
+                    width="100%"
+                    justifyContent="space-between"
+                  >
+                    <div .icon>
+                      <i class="fas fa-share-nodes"></i>
+                    </div>
+                    <div .hidden display="flex">
+                      <div .icon>
+                        <a href="{{ teacher.facebook }}" target="_blank">
+                          <i .fa-brands.fa-facebook-f></i>
+                        </a>
+                      </div>
+
+                      <div .icon>
+                        <a href="{{ teacher.instagram }}" target="_blank">
+                          <i .fa-brands.fa-instagram></i>
+                        </a>
+                      </div>
+
+                      <div .icon>
+                        <a href="{{ teacher.twitter }}" target="_blank">
+                          <i .fa-brands.fa-twitter></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div .content>
+                <p .name>
+                  <span>{{ teacher.teacher_name }}</span>
+                  <span .fas.fa-caret-down></span>
+                </p>
+                <p ._hidden>{{ teacher.about }}</p>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+    window.onload = function() {
+        var splide = new Splide('#splide3', {
+            padding: '5rem',
+            gap: '15px',
+            perMove: 1,
+            perPage: 1,
+            arrows: false,
+            autoplay: true,
+            focus: 'center',
+            breakpoints: {
+              767: {
+                perPage: 1,
+                padding: 0,
+                gap: 0,
+                autoWidth: false
+              },
+              1950: {
+                perPage: 4
+              },
+              1500: {
+                perPage: 3
+              },
+            }
+          });
+          splide.mount()
+    }
+</script>
+
+{% endblock %}
