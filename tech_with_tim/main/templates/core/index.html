@@ -69,7 +69,7 @@
 <div .modal-container>
     <div .modal display="flex" flexDirection="column" sm:width:100%!>
         <div .img>
-            <img src="/static/assets/media/images/courses/course-1.png" alt="" width="500px" height="300px">
+            <img src="/static/assets/media/images/course.png" alt="" width="500px" height="300px">
         </div>
         <div .content>
             <b><span>IELTS - Гарантируем как минимум 6.5 - 7.0 band score</span></b>
@@ -634,9 +634,9 @@
             </div>
         </div>
         <div .row sm:flex-direction:column! sm:align-items:center! marginTop="50px" flexWrap="wrap">
-            {% for faq in faqs %}
-            <div .col Width="47%">
+            <div .col>
                 <ul>
+                    {% for faq in faq1 %}
                     <li>
                         <div>
                             <span .question>{{ faq.question }}</span>
@@ -647,9 +647,25 @@
                             {{ faq.answer }}
                         </p>
                     </li>
+                    {% endfor %}
                 </ul>
             </div>
-            {% endfor %}
+            <div .col>
+                <ul>
+                    {% for faq in faq2%}
+                    <li>
+                        <div>
+                            <span .question>{{ faq.question }}</span>
+                            <span .collapse button>
+                            </span>
+                        </div>
+                        <p .hidden>
+                            {{ faq.answer }}
+                        </p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 </section>
@@ -691,7 +707,7 @@
 
 <section #contact paddingTop="40px" background="#fff">
     <div .container position='relative'>
-        <iframe width="100%" position='absolute' left="50%" transform='translateX(-50%)' height="900" id="gmap_canvas"
+        <iframe width="100%" position='absolute' left="50%" transform='translateX(-50%)' height="900" sm:display:none! id="gmap_canvas"
             src="https://maps.google.com/maps?q=English%20With%20Tim&t=&z=19&ie=UTF8&iwloc=&output=embed"
             frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
         <div position='relative' zIndex=2>

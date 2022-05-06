@@ -194,11 +194,17 @@ section {
   background: var(--s-main-background);
 }
 
-section:not(#whywe, #courses, #teachers, #about-us, #faq) {
+section:not(#whywe, #courses, #teachers, #about-us, #faq, #footer) {
   background: #fff;
   padding-top: 40px;
 }
 
 .splide__pagination {
   bottom: -25px;
+}
+
+@media screen and (max-width: 776px) {
+  span.question {
+    font-weight: bold;
+  }
 }

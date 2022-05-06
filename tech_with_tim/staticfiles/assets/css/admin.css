@@ -648,6 +648,12 @@ img {
     max-height: 700px;
 }
 
+@media screen and (max-height: 700px) {
+    .modal .box {
+        max-height: 100% !important;
+    }
+}
+
 .modal .box form>div {
     display: flex;
     flex-direction: column;

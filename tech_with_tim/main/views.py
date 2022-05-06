@@ -22,6 +22,9 @@ def home(request):
     faq = Faq.objects.all()
     photo = Photo.objects.all()
     info = Information.objects.first()
+    length = len(faq) // 2
+    faq1 = faq[:length]
+    faq2 = faq[length:]
     if 'is_new' in request.session:
         print('This user have entered before')
     else:
@@ -54,8 +57,9 @@ def home(request):
     context = {
         'courses': course,
         'teachers': teacher,
-        'faqs': faq,
         'photos': photo,
-        'form': form
+        'form': form,
+        "faq1": faq1,
+        "faq2": faq2, 
     }
     return render(request, 'core/index.html', context)
