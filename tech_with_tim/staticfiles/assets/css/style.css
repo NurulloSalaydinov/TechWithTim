@@ -594,8 +594,7 @@ img {
 .gallery .row {
     display: flex;
     overflow: visible;
-    margin-left: -9px;
-    margin-top: 50px;
+    margin: 50px auto;
 }
 
 .gallery .row .col {
@@ -957,7 +956,7 @@ textarea {
 
     .gallery .row .col {
         height: 140px !important;
-        max-width: 200px !important;
+        max-width: 300px !important;
     }
 
     #results .cards .card img {
